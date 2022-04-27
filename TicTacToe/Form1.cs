@@ -16,5 +16,14 @@ namespace TicTacToe
         {
             InitializeComponent();
         }
+
+        private void activeControl()
+        {
+            this.ActiveControl = null;
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Visible = true;
+        }
     }
 }
