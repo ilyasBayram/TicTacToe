@@ -17,8 +17,11 @@ namespace TicTacToe
             InitializeComponent();
         }
        
-        public int count = 0;
-        public int player = 0;
+        int count = 0;
+        int player = 0;
+        int scoreX = 0;
+        int scoreO = 0;
+
         bool result;
         List<string> fromLeftToRightFirst = new List<string>();
         List<string> fromLeftToRightSecond = new List<string>();
@@ -78,8 +81,31 @@ namespace TicTacToe
             buttonsEnable();
             
         }
-       
 
+        private void ButtonsAndListClear()
+        {
+            button1.Text = "";
+            button2.Text = "";
+            button3.Text = "";
+            button3.Text = "";
+            button4.Text = "";
+            button5.Text = "";
+            button6.Text = "";
+            button7.Text = "";
+            button8.Text = "";
+            button9.Text = "";
+            fromLeftToRightFirst.Clear();
+            fromLeftToRightSecond.Clear();
+            fromLeftToRightThird.Clear();
+            fromUpToDownFirst.Clear();
+            fromUpToDownSecond.Clear();
+            fromUpToDownThird.Clear();
+            fromLeftToDownDiagonal.Clear();
+            fromRightToDownDiagonal.Clear();
+
+
+        }
+       
         private  bool GameCheck(List<string> a, List<string> b, List<string> c,
             List<string> d, List<string> e, List<string> f, List<string> g, List<string> h)
         {
@@ -147,10 +173,11 @@ namespace TicTacToe
                 index = 0;
                 for (int i = 0; i < 2; i++)
                 {
-                    if (f[index] == f[index + 1])
+                    if (f[index] == f[index + 1]) 
                     {
                         index++;
                     }
+                    
                 }
             }
             if (g.Count == 3)
@@ -187,6 +214,42 @@ namespace TicTacToe
 
         }           
         
+        private void GameResult()
+        {
+            result = GameCheck(fromLeftToRightFirst, fromLeftToRightSecond, fromLeftToRightThird, fromUpToDownFirst,
+             fromUpToDownSecond, fromUpToDownThird, fromLeftToDownDiagonal, fromRightToDownDiagonal);
+            if (result == true && count == 1 && player == 2)
+            {
+                scoreX++;
+                lblScoreX.Text = Convert.ToString(scoreX);
+                ButtonsAndListClear();
+                buttonsEnable();
+
+            }
+            if (result == true && count == 1 && player == 1)
+            {
+                scoreO++;
+                lblScoreO.Text = Convert.ToString(scoreO);
+                ButtonsAndListClear();
+                buttonsEnable();
+            }
+            if (result == true && count == 2 && player == 1 )
+            {
+                scoreO++;
+                lblScoreO.Text = Convert.ToString(scoreO);
+                ButtonsAndListClear();
+                buttonsEnable();
+            }
+            if (result == true && count == 2 && player == 2)
+            {
+                scoreX++;
+                lblScoreX.Text = Convert.ToString(scoreX);
+                ButtonsAndListClear();
+                buttonsEnable();
+            }
+
+
+        }
 
         private void buttonO_Click(object sender, EventArgs e)
         {
@@ -218,8 +281,9 @@ namespace TicTacToe
                 fromLeftToDownDiagonal.Add("o");
                 button1.Text = "O";
                 player = 1;
-            }
+            }           
             button1.Enabled = false;
+            GameResult();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -239,6 +303,7 @@ namespace TicTacToe
                 player = 1;
             }
             button2.Enabled = false;
+            GameResult();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -260,13 +325,8 @@ namespace TicTacToe
                 button3.Text = "O";
                 player = 1;
             }
-            result = GameCheck(fromLeftToRightFirst, fromLeftToRightSecond, fromLeftToRightThird, fromUpToDownFirst,
-              fromUpToDownSecond, fromUpToDownThird, fromLeftToDownDiagonal, fromRightToDownDiagonal);
-            if (result == true && player == 1)
-            {
-                lblScoreX.Text = "1";
-            }
             button3.Enabled = false;
+            GameResult();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -286,6 +346,7 @@ namespace TicTacToe
                 player = 1;
             }
             button4.Enabled = false;
+            GameResult();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -296,8 +357,8 @@ namespace TicTacToe
             {
                 fromLeftToRightSecond.Add("x");
                 fromUpToDownSecond.Add("x");
-                fromLeftToDownDiagonal.Add("X");
-                fromRightToDownDiagonal.Add("X");
+                fromLeftToDownDiagonal.Add("x");
+                fromRightToDownDiagonal.Add("x");
                 button5.Text = "X";
                 player = 2;
             }
@@ -310,13 +371,8 @@ namespace TicTacToe
                 button5.Text = "O";
                 player = 1;
             }
-            result = GameCheck(fromLeftToRightFirst, fromLeftToRightSecond, fromLeftToRightThird, fromUpToDownFirst,
-                fromUpToDownSecond, fromUpToDownThird, fromLeftToDownDiagonal, fromRightToDownDiagonal);
-            if (result == true && player == 1)
-            {
-                lblScoreX.Text = "1";
-            }
             button5.Enabled = false;
+            GameResult();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -336,12 +392,11 @@ namespace TicTacToe
                 player = 1;
             }
             button6.Enabled = false;
+            GameResult();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-           
-
             if (player == 1)
             {
                 fromLeftToRightThird.Add("x");
@@ -358,13 +413,8 @@ namespace TicTacToe
                 button7.Text = "O";
                 player = 1;
             }
-            result = GameCheck(fromLeftToRightFirst, fromLeftToRightSecond, fromLeftToRightThird, fromUpToDownFirst,
-              fromUpToDownSecond, fromUpToDownThird, fromLeftToDownDiagonal, fromRightToDownDiagonal);
-            if (result == true && player == 1)
-            {
-                lblScoreX.Text = "1";
-            }
             button7.Enabled = false;
+            GameResult();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -384,6 +434,7 @@ namespace TicTacToe
                 player = 1;
             }
             button8.Enabled = false;
+            GameResult();
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -398,13 +449,14 @@ namespace TicTacToe
             }
             else
             {
-                fromLeftToRightFirst.Add("o");
-                fromUpToDownFirst.Add("o");
+                fromLeftToRightThird.Add("o");
+                fromUpToDownThird.Add("o");
                 fromLeftToDownDiagonal.Add("o");
                 button9.Text = "O";
                 player = 1;
             }
             button9.Enabled = false;
+            GameResult();
         }
 
         private void Form1_Load(object sender, EventArgs e)
