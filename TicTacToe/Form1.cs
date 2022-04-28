@@ -16,13 +16,16 @@ namespace TicTacToe
         {
             InitializeComponent();
         }
-       
+        #region variables
         int count = 0;
         int player = 0;
         int scoreX = 0;
         int scoreO = 0;
-
         bool result;
+        #endregion
+
+        // when the buttons are clicked "x" or "o" letters added those lists.
+        #region lists
         List<string> fromLeftToRightFirst = new List<string>();
         List<string> fromLeftToRightSecond = new List<string>();
         List<string> fromLeftToRightThird = new List<string>();
@@ -31,9 +34,10 @@ namespace TicTacToe
         List<string> fromUpToDownThird = new List<string>();
         List<string> fromLeftToDownDiagonal = new List<string>();
         List<string> fromRightToDownDiagonal = new List<string>();
+        #endregion
 
-
-        private void buttonsEnable()
+        #region methods
+        private void ButtonsEnable()
         {
             button1.Enabled = true;
             button2.Enabled = true;
@@ -44,9 +48,10 @@ namespace TicTacToe
             button7.Enabled = true;
             button8.Enabled = true;
             button9.Enabled = true;
+            buttonRestart.Enabled = true;
         }
 
-        private void buttonsUnenable()
+        private void ButtonsUnenable()
         {
             button1.Enabled = false;
             button2.Enabled = false;
@@ -57,9 +62,11 @@ namespace TicTacToe
             button7.Enabled = false;
             button8.Enabled = false;
             button9.Enabled = false;
+            buttonRestart.Enabled = false;
         }
 
-        private void choosePlayer()
+        // According to first choose it detirmenise what signs of players will be.
+        private void ChoosePlayer()
         {
             labelPlayerOne.Visible = true;
             labelPlayerTwo.Visible = true;
@@ -78,10 +85,11 @@ namespace TicTacToe
             }
             buttonO.Enabled = false;
             buttonX.Enabled = false;
-            buttonsEnable();
+            ButtonsEnable();
             
         }
 
+        //It clears text of buttons and lists members.
         private void ButtonsAndListClear()
         {
             button1.Text = "";
@@ -106,6 +114,7 @@ namespace TicTacToe
 
         }
        
+        // It checks if memebers of lists are same. If so it adds score to player.
         private  bool GameCheck(List<string> a, List<string> b, List<string> c,
             List<string> d, List<string> e, List<string> f, List<string> g, List<string> h)
         {
@@ -225,6 +234,8 @@ namespace TicTacToe
                 player = 2;
             }
         }
+
+        // It checks if someone reach to score 3 and make game ready for next one.
         private void GameResult()
         {
             result = GameCheck(fromLeftToRightFirst, fromLeftToRightSecond, fromLeftToRightThird, fromUpToDownFirst,
@@ -234,7 +245,7 @@ namespace TicTacToe
                 scoreX++;
                 lblScoreX.Text = Convert.ToString(scoreX);
                 ButtonsAndListClear();
-                buttonsEnable();
+                ButtonsEnable();
                 PlayerChange();
 
             }
@@ -243,7 +254,7 @@ namespace TicTacToe
                 scoreO++;
                 lblScoreO.Text = Convert.ToString(scoreO);
                 ButtonsAndListClear();
-                buttonsEnable();
+                ButtonsEnable();
                 PlayerChange();
             }
             else if (result == true && count == 2 && player == 1 )
@@ -251,7 +262,7 @@ namespace TicTacToe
                 scoreO++;
                 lblScoreO.Text = Convert.ToString(scoreO);
                 ButtonsAndListClear();
-                buttonsEnable();
+                ButtonsEnable();
                 PlayerChange();
             }
             else if (result == true && count == 2 && player == 2)
@@ -259,7 +270,7 @@ namespace TicTacToe
                 scoreX++;
                 lblScoreX.Text = Convert.ToString(scoreX);
                 ButtonsAndListClear();
-                buttonsEnable();
+                ButtonsEnable();
                 PlayerChange();
             }
             if (scoreO==3 || scoreX==3)
@@ -276,7 +287,7 @@ namespace TicTacToe
                     labelPlayerMessage.Text = "              O is the winner.";
                     scoreO = 0;
                 }
-                buttonsUnenable();
+                ButtonsUnenable();
                 buttonX.Enabled = true;
                 buttonO.Enabled = true;
                 labelPlayerOne.Text = "";
@@ -288,17 +299,19 @@ namespace TicTacToe
 
 
         }
+        #endregion
 
+        #region buttons
         private void buttonO_Click(object sender, EventArgs e)
         {
             count = 2;
-            choosePlayer();
+            ChoosePlayer();
         }
 
         private void buttonX_Click(object sender, EventArgs e)
         {
             count = 1;
-            choosePlayer();
+            ChoosePlayer();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -499,8 +512,21 @@ namespace TicTacToe
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           buttonsUnenable();
+           ButtonsUnenable();
           
         }
+
+        private void buttonRestart_Click(object sender, EventArgs e)
+        {
+            ButtonsUnenable();
+            ButtonsAndListClear();
+            buttonO.Enabled = true;
+            buttonX.Enabled = true;
+            labelPlayerOne.Text = "";
+            labelPlayerTwo.Text = "";
+            lblScoreO.Text = "-";
+            lblScoreX.Text = "-";
+        }
     }
+    #endregion
 }

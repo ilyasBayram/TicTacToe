@@ -48,6 +48,7 @@ namespace TicTacToe
             this.labelPlayerOne = new System.Windows.Forms.Label();
             this.labelPlayerTwo = new System.Windows.Forms.Label();
             this.labelPlayerMessage = new System.Windows.Forms.Label();
+            this.buttonRestart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonX
@@ -262,6 +263,17 @@ namespace TicTacToe
             this.labelPlayerMessage.TabIndex = 17;
             this.labelPlayerMessage.Text = "Player 1 please choose one side";
             // 
+            // buttonRestart
+            // 
+            this.buttonRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonRestart.Location = new System.Drawing.Point(443, 585);
+            this.buttonRestart.Name = "buttonRestart";
+            this.buttonRestart.Size = new System.Drawing.Size(196, 47);
+            this.buttonRestart.TabIndex = 18;
+            this.buttonRestart.Text = "Restart";
+            this.buttonRestart.UseVisualStyleBackColor = true;
+            this.buttonRestart.Click += new System.EventHandler(this.buttonRestart_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -269,6 +281,7 @@ namespace TicTacToe
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1053, 674);
+            this.Controls.Add(this.buttonRestart);
             this.Controls.Add(this.labelPlayerMessage);
             this.Controls.Add(this.labelPlayerTwo);
             this.Controls.Add(this.labelPlayerOne);
@@ -318,6 +331,7 @@ namespace TicTacToe
         private System.Windows.Forms.Label labelPlayerOne;
         private System.Windows.Forms.Label labelPlayerTwo;
         private System.Windows.Forms.Label labelPlayerMessage;
+        private System.Windows.Forms.Button buttonRestart;
     }
 }
 
