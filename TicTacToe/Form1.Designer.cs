@@ -255,10 +255,10 @@ namespace TicTacToe
             // labelPlayerMessage
             // 
             this.labelPlayerMessage.AutoSize = true;
-            this.labelPlayerMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelPlayerMessage.Location = new System.Drawing.Point(319, 31);
+            this.labelPlayerMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelPlayerMessage.Location = new System.Drawing.Point(290, 26);
             this.labelPlayerMessage.Name = "labelPlayerMessage";
-            this.labelPlayerMessage.Size = new System.Drawing.Size(363, 29);
+            this.labelPlayerMessage.Size = new System.Drawing.Size(474, 37);
             this.labelPlayerMessage.TabIndex = 17;
             this.labelPlayerMessage.Text = "Player 1 please choose one side";
             // 

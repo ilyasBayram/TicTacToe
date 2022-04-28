@@ -111,7 +111,7 @@ namespace TicTacToe
         {
             int index = 0;
            
-            if (a.Count == 3)
+            if (a.Count == 3 && index !=2)
             {
                 index = 0;
                 
@@ -124,7 +124,7 @@ namespace TicTacToe
                 }
 
             }
-            if (b.Count == 3)
+            if (b.Count == 3 && index != 2)
             {
                 index = 0;
                 for (int i = 0; i < 2; i++)
@@ -135,7 +135,7 @@ namespace TicTacToe
                     }
                 }
             }
-            if (c.Count == 3)
+            if (c.Count == 3 && index != 2)
             {
                 index = 0;
                 for (int i = 0; i < 2; i++)
@@ -146,7 +146,7 @@ namespace TicTacToe
                     }
                 }
             }
-            if (d.Count == 3)
+            if (d.Count == 3 && index != 2)
             {
                 index = 0;
                 for (int i = 0; i < 2; i++)
@@ -157,7 +157,7 @@ namespace TicTacToe
                     }
                 }
             }
-            if (e.Count == 3)
+            if (e.Count == 3 && index != 2)
             {
                 index = 0;
                 for (int i = 0; i < 2; i++)
@@ -168,7 +168,7 @@ namespace TicTacToe
                     }
                 }
             }
-            if (f.Count == 3)
+            if (f.Count == 3 && index != 2)
             {
                 index = 0;
                 for (int i = 0; i < 2; i++)
@@ -180,7 +180,7 @@ namespace TicTacToe
                     
                 }
             }
-            if (g.Count == 3)
+            if (g.Count == 3 && index != 2)
             {
                 index = 0;
                 for (int i = 0; i < 2; i++)
@@ -214,6 +214,17 @@ namespace TicTacToe
 
         }           
         
+        private void PlayerChange()
+        {
+            if (player==2)
+            {
+                player = 1;
+            }
+            else if (player==1)
+            {
+                player = 2;
+            }
+        }
         private void GameResult()
         {
             result = GameCheck(fromLeftToRightFirst, fromLeftToRightSecond, fromLeftToRightThird, fromUpToDownFirst,
@@ -224,28 +235,55 @@ namespace TicTacToe
                 lblScoreX.Text = Convert.ToString(scoreX);
                 ButtonsAndListClear();
                 buttonsEnable();
+                PlayerChange();
 
             }
-            if (result == true && count == 1 && player == 1)
+            else if (result == true && count == 1 && player == 1)
             {
                 scoreO++;
                 lblScoreO.Text = Convert.ToString(scoreO);
                 ButtonsAndListClear();
                 buttonsEnable();
+                PlayerChange();
             }
-            if (result == true && count == 2 && player == 1 )
+            else if (result == true && count == 2 && player == 1 )
             {
                 scoreO++;
                 lblScoreO.Text = Convert.ToString(scoreO);
                 ButtonsAndListClear();
                 buttonsEnable();
+                PlayerChange();
             }
-            if (result == true && count == 2 && player == 2)
+            else if (result == true && count == 2 && player == 2)
             {
                 scoreX++;
                 lblScoreX.Text = Convert.ToString(scoreX);
                 ButtonsAndListClear();
                 buttonsEnable();
+                PlayerChange();
+            }
+            if (scoreO==3 || scoreX==3)
+            {
+                labelPlayerMessage.Text = "";
+                labelPlayerMessage.Visible = true;
+                if (scoreX==3)
+                {
+                    labelPlayerMessage.Text = "             X is the winner.";
+                    scoreX = 0;
+                }
+                else if (scoreO==3)
+                {
+                    labelPlayerMessage.Text = "              O is the winner.";
+                    scoreO = 0;
+                }
+                buttonsUnenable();
+                buttonX.Enabled = true;
+                buttonO.Enabled = true;
+                labelPlayerOne.Text = "";
+                labelPlayerTwo.Text = "";
+                lblScoreO.Text = "-";
+                lblScoreX.Text = "-";
+
             }
 
 
