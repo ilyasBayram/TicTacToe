@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace TicTacToe
 {
@@ -23,6 +24,11 @@ namespace TicTacToe
         int scoreO = 0;
         bool result;
         #endregion
+
+        SoundPlayer SignsSound = new SoundPlayer();
+        SoundPlayer PlayingSound = new SoundPlayer();
+
+        
 
         // when the buttons are clicked "x" or "o" letters added those lists.
         #region lists
@@ -299,6 +305,13 @@ namespace TicTacToe
 
 
         }
+
+        private void ButtonSound()
+        {
+            SignsSound.SoundLocation = @"C:\Users\ilyas.bayram\source\repos\TicTacToe\TicTacToe\buttonClick.wav";
+            SignsSound.Play();
+        }
+
         #endregion
 
         #region buttons
@@ -316,7 +329,7 @@ namespace TicTacToe
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            ButtonSound();
             if (player==1)
             {
                 fromLeftToRightFirst.Add("x");
@@ -339,6 +352,7 @@ namespace TicTacToe
 
         private void button2_Click(object sender, EventArgs e)
         {
+            ButtonSound();
             if (player == 1)
             {
                 fromLeftToRightFirst.Add("x");
@@ -359,7 +373,7 @@ namespace TicTacToe
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
+            ButtonSound();
             if (player == 1)
             {
                 fromLeftToRightFirst.Add("x");
@@ -382,6 +396,7 @@ namespace TicTacToe
 
         private void button4_Click(object sender, EventArgs e)
         {
+            ButtonSound();
             if (player == 1)
             {
                 fromLeftToRightSecond.Add("x");
@@ -402,8 +417,7 @@ namespace TicTacToe
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
-
+            ButtonSound();
             if (player == 1)
             {
                 fromLeftToRightSecond.Add("x");
@@ -428,6 +442,7 @@ namespace TicTacToe
 
         private void button6_Click(object sender, EventArgs e)
         {
+            ButtonSound();
             if (player == 1)
             {
                 fromLeftToRightSecond.Add("x");
@@ -448,6 +463,7 @@ namespace TicTacToe
 
         private void button7_Click(object sender, EventArgs e)
         {
+            ButtonSound();
             if (player == 1)
             {
                 fromLeftToRightThird.Add("x");
@@ -470,6 +486,7 @@ namespace TicTacToe
 
         private void button8_Click(object sender, EventArgs e)
         {
+            ButtonSound();
             if (player == 1)
             {
                 fromLeftToRightThird.Add("x");
@@ -490,6 +507,7 @@ namespace TicTacToe
 
         private void button9_Click(object sender, EventArgs e)
         {
+            ButtonSound();
             if (player == 1)
             {
                 fromLeftToRightThird.Add("x");
@@ -513,11 +531,13 @@ namespace TicTacToe
         private void Form1_Load(object sender, EventArgs e)
         {
            ButtonsUnenable();
+
           
         }
 
         private void buttonRestart_Click(object sender, EventArgs e)
         {
+
             ButtonsUnenable();
             ButtonsAndListClear();
             buttonO.Enabled = true;
@@ -526,6 +546,7 @@ namespace TicTacToe
             labelPlayerTwo.Text = "";
             lblScoreO.Text = "-";
             lblScoreX.Text = "-";
+
         }
     }
     #endregion
