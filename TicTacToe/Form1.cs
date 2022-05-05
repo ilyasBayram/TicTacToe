@@ -23,6 +23,7 @@ namespace TicTacToe
         int scoreX = 0;
         int scoreO = 0;
         bool result;
+        bool drawResult;
         #endregion
 
         SoundPlayer SignsSound = new SoundPlayer();
@@ -228,6 +229,19 @@ namespace TicTacToe
             }
 
         }           
+
+        private bool draw()
+        {
+            if (fromLeftToRightFirst.Count==3 && fromLeftToRightSecond.Count==3 && fromLeftToRightThird.Count==3)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         
         private void PlayerChange()
         {
@@ -246,6 +260,7 @@ namespace TicTacToe
         {
             result = GameCheck(fromLeftToRightFirst, fromLeftToRightSecond, fromLeftToRightThird, fromUpToDownFirst,
              fromUpToDownSecond, fromUpToDownThird, fromLeftToDownDiagonal, fromRightToDownDiagonal);
+            drawResult = draw();
             if (result == true && count == 1 && player == 2)
             {
                 scoreX++;
@@ -293,6 +308,7 @@ namespace TicTacToe
                     labelPlayerMessage.Text = "              O is the winner.";
                     scoreO = 0;
                 }
+               
                 ButtonsUnenable();
                 buttonX.Enabled = true;
                 buttonO.Enabled = true;
@@ -300,7 +316,12 @@ namespace TicTacToe
                 labelPlayerTwo.Text = "";
                 lblScoreO.Text = "-";
                 lblScoreX.Text = "-";
-
+            }
+            if (drawResult == true)
+            {
+                ButtonsAndListClear();
+                ButtonsEnable();
+                PlayerChange();
             }
 
 
@@ -348,6 +369,7 @@ namespace TicTacToe
             }           
             button1.Enabled = false;
             GameResult();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
